@@ -127,7 +127,7 @@ All chart colors use a **calming palette** — soft blues `#7facd6`, teals `#8ec
 | **Warm color palette** | Soft blues, teals, sage greens, lavenders. No red anywhere in the analytics or reports. |
 | **Progress framing** | Stats say "15% calmer this week" not "anxiety down 15%". Every number tells a growth story. |
 | **Privacy first** | All data lives in `localStorage`. Nothing leaves the browser. No cookies, no analytics, no server calls. |
-| **Zero dependencies** | One HTML file. No npm, no build tools, no frameworks. Open it and it works. |
+| **Zero dependencies** | Three clean files — HTML, CSS, JS. No npm, no build tools, no frameworks. Open it and it works. |
 
 <br>
 
@@ -162,10 +162,10 @@ python3 -m http.server 8080
 # node
 npx serve .
 
-# or just double-click index_v2.html
+# or just double-click index1.html
 ```
 
-Then visit `http://localhost:8080/index_v2.html`
+Then visit `http://localhost:8080/index1.html`
 
 <br>
 
@@ -173,11 +173,13 @@ Then visit `http://localhost:8080/index_v2.html`
 
 ```
 project/
-├── index_v2.html       # the main application file
+├── index1.html         # HTML structure & layout
+├── style.css           # all styles, variables, responsive design
+├── script.js           # auth, charts, audio, timer, breathing, quotes
 └── README.md
 ```
 
-Everything — HTML, CSS, and JavaScript — lives inside `index_v2.html`. Single file, fully self-contained.
+Clean separation of concerns — markup in `index1.html`, styling in `style.css`, behavior in `script.js`. No bundler needed, just serve and go.
 
 <br>
 
