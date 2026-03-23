@@ -705,5 +705,119 @@ function initApp() {
             qText.style.transition = 'opacity 0.4s'; qAuth.style.transition = 'opacity 0.4s';
         }, 300);
     });
+// ========================================================
+    // AIM TRAINER (GRIDSHOT) LOGIC
+    // ========================================================
+    let aimScore = 0;
+    let aimTime = 60;
+    let aimGameInterval = null;
+    let isAimGameRunning = false;
+    
+    const aimContainer = document.getElementById('aimContainer');
+    const aimTimerEl = document.getElementById('aimTimer');
+    const aimScoreEl = document.getElementById('aimScore');
+    const startAimBtn = document.getElementById('startAimGame');
+    // Satisfying hit sound
+    const aimHitSound = new Audio('https://www.soundjay.com/buttons/sounds/button-20.mp3');
 
+    function spawnTarget() {
+        if (!isAimGameRunning || !aimContainer) return;
+        if (aimContainer.children.length >= 3) return; // Keep exactly 3 targets on screen like Gridshot
+        
+        const target = document.createElement('div');
+        target.className = 'aim-target';
+        
+        // Calculate safe spawn area (accounting for the 65px width/height of the target)
+        const margin = 40;
+        const maxX = aimContainer.clientWidth - (margin * 2);
+        const maxY = aimContainer.clientHeight - (margin * 2);
+        
+        const x = (Math.random() * maxX) + margin;
+        const y = (Math.random() * maxY) + margin;
+        
+        target.style.left = `${x}px`;
+        target.style.top = `${y}px`;
+        
+        target.addEventListener('mousedown', () => {
+            if (!isAimGameRunning) return;
+            
+            // Play sound
+            aimHitSound.currentTime = 0;
+            aimHitSound.play().catch(e => console.log('Audio blocked:', e));
+            
+            // Update Score
+            aimScore++;
+            aimScoreEl.innerText = aimScore;
+            
+            // Remove target and spawn a new one instantly
+            target.remove();
+            spawnTarget(); 
+        });
+        
+        aimContainer.appendChild(target);
+    }
+
+    if (startAimBtn) {
+        startAimBtn.addEventListener('click', () => {
+            if (isAimGameRunning) return;
+            
+            isAimGameRunning = true;
+            aimScore = 0;
+            aimTime = 60;
+            
+            aimScoreEl.innerText = aimScore;
+            aimTimerEl.innerText = aimTime;
+            aimContainer.innerHTML = ''; // Clear container (removes the "Click Start" text)
+            startAimBtn.disabled = true;
+            startAimBtn.innerText = "Playing...";
+            
+            // Spawn initial 3 targets
+            for(let i=0; i<3; i++) spawnTarget();
+            
+            // Start Timer
+            aimGameInterval = setInterval(() => {
+                aimTime--;
+                aimTimerEl.innerText = aimTime;
+                
+                if (aimTime <= 0) {
+                    clearInterval(aimGameInterval);
+                    isAimGameRunning = false;
+                    startAimBtn.disabled = false;
+                    startAimBtn.innerText = "Play Again";
+                    
+                    // Show final score screen
+                    aimContainer.innerHTML = `
+                        <div style="color:white; font-size: 2rem; position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); text-align: center;">
+                            <div style="font-size: 1.2rem; color: #a0a0a0; margin-bottom: 10px;">Time's Up!</div>
+                            <div>Final Score: <span style="color: #ff4757; font-weight: bold;">${aimScore}</span></div>
+                        </div>
+                    `;
+                }
+            }, 1000);
+        });
+    }
+    // ========================================================
+    // WHOLESOME FEED LOGIC
+    // ========================================================
+    const wholesomeVideos = [
+        { title: "Funny Cats Compilation", id: "tpiyEe_CqO4" }, 
+        { title: "Babies Laughing Hysterically", id: "L49VOKQZ87E" },
+        { title: "Golden Retrievers Being Cute", id: "2S2N6V_E6Y8" },
+        { title: "Kittens Meeting Puppies", id: "0Bmhjf0rKe8" },
+        { title: "Wholesome Animals", id: "3Q2ZkX9T3zY" },
+        { title: "Baby Panda Sneezing", id: "FzRH3iTQPrk" }
+    ];
+
+    const videoFeed = document.getElementById('videoFeed');
+    if (videoFeed && videoFeed.children.length === 0) {
+        wholesomeVideos.forEach(vid => {
+            const card = document.createElement('div');
+            card.className = 'video-card';
+            card.innerHTML = `
+                <iframe src="https://www.youtube.com/embed/${vid.id}" allowfullscreen></iframe>
+                <div class="video-card-title">${vid.title}</div>
+            `;
+            videoFeed.appendChild(card);
+        });
+    }
 } // end initApp
