@@ -238,3 +238,97 @@ input[type=range]::-webkit-slider-runnable-track { width: 100%; height: 6px; cur
 
 /* Hide main app until logged in */
 .app-wrapper.hidden { display: none; }
+
+
+
+/* ========================================================
+   AIM TRAINER (GRIDSHOT)
+   ======================================================== */
+.aim-stats {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 15px;
+    align-items: center;
+}
+
+.stat-box {
+    font-size: 1.2rem;
+    font-weight: 600;
+    background: var(--card-bg);
+    padding: 10px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    border: 1px solid var(--border);
+}
+
+.aim-area {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    background: #1a1a2e; /* Dark background for high contrast */
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: crosshair;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+}
+
+.aim-start-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: 500;
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.aim-target {
+    position: absolute;
+    border-radius: 50%;
+    background: #ff4757; /* Bright red/pink targets */
+    width: 65px;
+    height: 65px;
+    cursor: crosshair;
+    transform: translate(-50%, -50%); /* Centers the target on its coordinates */
+    box-shadow: 0 0 15px rgba(255, 71, 87, 0.4);
+    border: 2px solid #ffffff;
+}
+
+.aim-target:active {
+    background: #ffffff;
+    box-shadow: 0 0 20px #ffffff;
+}
+
+/* Wholesome Feed Styles */
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.video-card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+}
+
+.video-card:hover {
+    transform: translateY(-5px);
+}
+
+.video-card iframe { 
+    width: 100%; 
+    aspect-ratio: 16/9; 
+    border: none; 
+}
+
+.video-card-title { 
+    padding: 15px; 
+    font-weight: 500; 
+    font-size: 0.95rem; 
+    color: var(--text-main); 
+}
