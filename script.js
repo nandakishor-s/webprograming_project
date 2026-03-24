@@ -800,12 +800,11 @@ function initApp() {
     // WHOLESOME FEED LOGIC
     // ========================================================
     const wholesomeVideos = [
-        { title: "Funny Cats Compilation", id: "tpiyEe_CqO4" }, 
-        { title: "Babies Laughing Hysterically", id: "L49VOKQZ87E" },
-        { title: "Golden Retrievers Being Cute", id: "2S2N6V_E6Y8" },
-        { title: "Kittens Meeting Puppies", id: "0Bmhjf0rKe8" },
-        { title: "Wholesome Animals", id: "3Q2ZkX9T3zY" },
-        { title: "Baby Panda Sneezing", id: "FzRH3iTQPrk" }
+        { title: "Funny Cats Compilation", id: "U5S0zs22z9g" }, 
+        { title: "Babies Laughing Hysterically", id: "TisotBmWaps" },
+        { title: "Golden Retrievers Being Cute", id: "Je09ps-3DTw" },
+        { title: "Wholesome Animals", id: "g84wE8RMpbg" },
+        { title: "Baby Panda Sneezing", id: "IWtY2wnKExM" }
     ];
 
     const videoFeed = document.getElementById('videoFeed');
