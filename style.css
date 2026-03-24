@@ -113,8 +113,34 @@ body { background: var(--bg-color); color: var(--text-main); transition: backgro
     .app-container { flex-direction: column; }
     .sidebar { display: none; }
     .content-panel { padding: 20px; padding-bottom: 90px; }
-    .bottom-nav { display: flex; position: fixed; bottom: 0; width: 100%; background: var(--sidebar-bg); border-top: 1px solid var(--border); padding: 10px; justify-content: space-around; z-index: 100; box-shadow: 0 -2px 10px rgba(0,0,0,0.05); }
-    .bottom-nav .nav-item { flex-direction: column; padding: 8px; gap: 4px; font-size: 0.65rem; border-radius: 8px; width: auto; }
+    .bottom-nav {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background: var(--sidebar-bg);
+        border-top: 1px solid var(--border);
+        padding: 6px 4px;
+        z-index: 100;
+        box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+    .bottom-nav::-webkit-scrollbar { display: none; }
+    .bottom-nav .nav-item {
+        flex-direction: column;
+        padding: 6px 10px;
+        gap: 3px;
+        font-size: 0.6rem;
+        border-radius: 8px;
+        width: auto;
+        flex: 0 0 auto;
+        min-width: 52px;
+        text-align: center;
+        justify-content: center;
+    }
     .bottom-nav .nav-item.active { background: transparent; color: var(--primary); }
     .bottom-nav .nav-item i { font-size: 1.1rem; }
 }
