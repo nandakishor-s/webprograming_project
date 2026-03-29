@@ -26,15 +26,14 @@
 //         }
 //       }
 // ================================================================
-
 const firebaseConfig = {
-    apiKey: "AIzaSyArUELlHAmPqqUpcFCKJhbSBqFybpiebSE",
-    authDomain: "mindpulse-7afe3.firebaseapp.com",
-    projectId: "mindpulse-7afe3",
-    storageBucket: "mindpulse-7afe3.firebasestorage.app",
-    messagingSenderId: "741315000976",
-    appId: "1:741315000976:web:9b09d7f6c8b8b771287615",
-    measurementId: "G-7KQGY58XW0"
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT.firebaseapp.com",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_PROJECT.firebasestorage.app",
+    messagingSenderId: "YOUR_SENDER_ID",
+    appId: "YOUR_APP_ID",
+    measurementId: "YOUR_MEASUREMENT_ID"
 };
 
 // Initialize Firebase
