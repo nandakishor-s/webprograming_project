@@ -17,7 +17,11 @@
 <img src="https://img.shields.io/badge/Web%20Audio%20API-8c94ff?style=flat-square" />
 </p>
 
----
+<br>
+
+<a href="https://mindpulse007.netlify.app">
+<img src="https://img.shields.io/badge/🔗_View_Live_Site-blue?style=for-the-badge&logoColor=white" alt="View Live Site" />
+</a>
 
 <table>
 <tr>
